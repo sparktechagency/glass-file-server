@@ -1,0 +1,35 @@
+name: Glass File
+
+on:
+  push:
+    branches: [ rakib, main ]
+  pull_request:
+    branches: [ rakib, main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x]
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: yarn
+    
+    - name: Build
+      run: npm run build
+    
+    - name: Deploy to production
+      if: github.ref == 'refs/heads/main' && success()
+      run: |
+        echo "Deploying to production..."
