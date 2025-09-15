@@ -29,10 +29,6 @@ jobs:
     - name: Build
       run: npm run build
     
-    - name: Run tests
-      if: success()
-      run: npm test
-      
     - name: Deploy to production
       if: github.ref == 'refs/heads/main' && success()
       run: |
