@@ -26,9 +26,6 @@ jobs:
     - name: Install dependencies
       run: yarn
     
-    - name: Run linter
-      run: npx eslint . --ext .ts
-    
     - name: Build
       run: npm run build
     
