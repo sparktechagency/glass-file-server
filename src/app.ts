@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads'));
 
 // Session middleware (must be before passport initialization)
+// @ts-ignore
 app.use(session({
     secret: "your_secret_key",
     resave: false,

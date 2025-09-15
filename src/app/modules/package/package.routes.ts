@@ -10,7 +10,7 @@ const router = express.Router()
 router
     .route("/")
     .post(
-        fileUploadHandler(), 
+        fileUploadHandler() as any, 
         auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN), 
         validateRequest(PackageValidation.createPackageZodSchema), 
         PackageController.createPackage
