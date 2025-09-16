@@ -21,7 +21,6 @@ export type IUser = {
     password: string;
     confirmPassword: string;
     provider:"google"|"email";
-    isSubscribed: boolean;
     profile: string;
     verified: boolean;
     authentication?: IAuthenticationProps;

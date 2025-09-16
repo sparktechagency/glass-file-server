@@ -33,6 +33,17 @@ const userSchema = new Schema<IUser, UserModal>(
             type: String,
             default: 'https://res.cloudinary.com/dzo4husae/image/upload/v1733459922/zfyfbvwgfgshmahyvfyk.png',
         },
+        confirmPassword: {
+            type: String,
+            required: false,
+            select: 0,
+            // minlength: 8,
+        },
+        provider: {
+            type: String,
+            enum: ["google", "email"],
+            required: true,
+        },
         verified: {
             type: Boolean,
             default: false,

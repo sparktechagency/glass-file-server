@@ -6,8 +6,7 @@ const createAdminZodSchema = z.object({
         email: z.string({ required_error: 'Email is required' }).email({ message: 'Invalid email address' }),
         password: z.string({ required_error: 'Password is required' }),
         role: z.string({ required_error: 'Role is required' }),
-        confirmPassword: z.string({ required_error: 'Confirm Password is required' }),
-        isSubscribed: z.boolean({ required_error: 'Is Subscribed is required' }),
+        confirmPassword: z.string({ required_error: 'Confirm Password is required' })
     })
 });
 
