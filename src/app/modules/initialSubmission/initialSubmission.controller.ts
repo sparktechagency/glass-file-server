@@ -7,7 +7,7 @@ import { InitialSubmissionService } from "./initialSubmission.service";
 // create initial submission
 const createInitialSubmission = catchAsync(
   async (req: Request, res: Response) => {
-    const result = await InitialSubmissionService.createInitialSubmissionIntoDB(req.body);
+    const result = await InitialSubmissionService.createInitialSubmissionIntoDB(req.body, req.user!);
     sendResponse(res, {
       success: true,
       statusCode: StatusCodes.OK,

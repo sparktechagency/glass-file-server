@@ -3,13 +3,14 @@ import { IInitialSubmission } from "./initialSubmission.interface";
 import { InitialSubmission } from "./initialSubmission.model";
 import ApiError from "../../../errors/ApiErrors";
 import QueryBuilder from "../../builder/QueryBuilder";
-
+import { JwtPayload } from "jsonwebtoken";
 /*
     data come from input field
     create initial submission into database
 */
 
-const createInitialSubmissionIntoDB = async (data: IInitialSubmission) => {
+const createInitialSubmissionIntoDB = async (data: IInitialSubmission, user: JwtPayload) => {
+    data.user = user.id;
   const result = await InitialSubmission.create(data);
   if (!result) {
     throw new ApiError(
