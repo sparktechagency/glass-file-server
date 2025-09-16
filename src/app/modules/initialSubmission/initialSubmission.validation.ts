@@ -37,7 +37,7 @@ const createInitialSubmissionZodSchema = z.object({
       required_error: "Allegation is required",
     }),
     evidence: z.array(z.string(), { required_error: "Evidence is required" }),
-    link: z.string().optional(),
+    link: z.string().optional()
   }),
 });
 
@@ -59,6 +59,7 @@ const updateInitialSubmissionZodSchema = z.object({
     allegation: z.array(z.string()).optional(),
     evidence: z.array(z.string()).optional(),
     link: z.string().optional(),
+    user: z.string().optional(),
   }),
 });
 

@@ -59,6 +59,10 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       type: String,
       required: false,
     },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

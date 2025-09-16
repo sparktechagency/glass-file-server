@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface IInitialSubmission {
   state: string;
   initiatorFirstName: string;
@@ -13,4 +15,5 @@ export interface IInitialSubmission {
   allegation: string[];
   evidence: string[];
   link?: string;
+  user: Types.ObjectId; 
 }

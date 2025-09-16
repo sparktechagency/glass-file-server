@@ -30,6 +30,9 @@ const fileUploadHandler = () => {
         case "evidence":
           uploadDir = path.join(baseUploadDir, "evidence");
           break;
+        case "supportingDocument":
+          uploadDir = path.join(baseUploadDir, "supportingDocument");
+          break;
         default:
           throw new ApiError(StatusCodes.BAD_REQUEST, "File is not supported");
       }
@@ -54,7 +57,7 @@ const fileUploadHandler = () => {
   //file filter
   const filterFilter = (req: Request, file: any, cb: FileFilterCallback) => {
     // console.log("file handler",file)
-    if (file.fieldname === "image" || file.fieldname === "evidence") {
+    if (file.fieldname === "image" || file.fieldname === "evidence" || file.fieldname === "supportingDocument") {
       if (
         file.mimetype === "image/jpeg" ||
         file.mimetype === "image/png" ||
@@ -77,6 +80,7 @@ const fileUploadHandler = () => {
   const upload = multer({ storage: storage, fileFilter: filterFilter }).fields([
     { name: "image", maxCount: 3 },
     { name: "evidence", maxCount: 3 },
+    { name: "supportingDocument", maxCount: 3 },
   ]);
   return upload;
 };
