@@ -2,18 +2,18 @@ import { Types } from "mongoose";
 
 export interface IInitialSubmission {
   state: string;
-  initiatorFirstName: string;
-  initiatorMiddleName: string;
-  initiatorLastName: string;
-  initiatorDOB: Date;
-  respondentFirstName: string;
+  fastName: string;
+  middleName: string;
+  lastName: string;
+  dob: Date;
+  respondentFastName: string;
   respondentMiddleName: string;
   respondentLastName: string;
   respondentDOB: Date;
   respondentEmail: string;
-  typeOfFiling: "Jurisdiction" | "ProceduralIssue" | "SubjectMatter";
   allegation: string[];
-  evidence: string[];
+  typeOfFiling: "Jurisdiction" | "ProceduralIssue" | "SubjectMatter";
+  evidence?: string[];
   link?: string;
-  user: Types.ObjectId; 
+  user: Types.ObjectId;
 }
