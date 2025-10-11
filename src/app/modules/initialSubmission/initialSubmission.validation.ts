@@ -9,17 +9,17 @@ const dateStringToDate = z.preprocess((val) => {
 const createInitialSubmissionZodSchema = z.object({
   body: z.object({
     state: z.string({ required_error: "State is required" }),
-    initiatorFirstName: z.string({
+    fastName: z.string({
       required_error: "Initiator First Name is required",
     }),
-    initiatorMiddleName: z.string({
+    middleName: z.string({
       required_error: "Initiator Middle Name is required",
     }),
-    initiatorLastName: z.string({
+    lastName: z.string({
       required_error: "Initiator Last Name is required",
     }),
-    initiatorDOB: dateStringToDate,
-    respondentFirstName: z.string({
+    dob: dateStringToDate,
+    respondentFastName: z.string({
       required_error: "Respondent First Name is required",
     }),
     respondentMiddleName: z.string({
@@ -37,18 +37,18 @@ const createInitialSubmissionZodSchema = z.object({
       required_error: "Allegation is required",
     }),
     evidence: z.array(z.string(), { required_error: "Evidence is required" }),
-    link: z.string().optional()
+    link: z.string().optional(),
   }),
 });
 
 const updateInitialSubmissionZodSchema = z.object({
   body: z.object({
     state: z.string().optional(),
-    initiatorFirstName: z.string().optional(),
-    initiatorMiddleName: z.string().optional(),
-    initiatorLastName: z.string().optional(),
-    initiatorDOB: dateStringToDate.optional(),
-    respondentFirstName: z.string().optional(),
+    fastName: z.string().optional(),
+    middleName: z.string().optional(),
+    lastName: z.string().optional(),
+    dob: dateStringToDate.optional(),
+    respondentFastName: z.string().optional(),
     respondentMiddleName: z.string().optional(),
     respondentLastName: z.string().optional(),
     respondentDOB: dateStringToDate.optional(),

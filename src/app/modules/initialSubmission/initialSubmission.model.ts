@@ -7,23 +7,23 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       type: String,
       required: true,
     },
-    initiatorFirstName: {
+    fastName: {
       type: String,
       required: true,
     },
-    initiatorMiddleName: {
+    middleName: {
       type: String,
       required: true,
     },
-    initiatorLastName: {
+    lastName: {
       type: String,
       required: true,
     },
-    initiatorDOB: {
+    dob: {
       type: Date,
       required: true,
     },
-    respondentFirstName: {
+    respondentFastName: {
       type: String,
       required: true,
     },
@@ -53,7 +53,7 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     },
     evidence: {
       type: [String],
-      required: true,
+      required: false,
     },
     link: {
       type: String,
@@ -69,4 +69,7 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
   }
 );
 
-export const InitialSubmission = model<IInitialSubmission>("InitialSubmission", initialSubmissionSchema);
+export const InitialSubmission = model<IInitialSubmission>(
+  "submittionForm",
+  initialSubmissionSchema
+);
