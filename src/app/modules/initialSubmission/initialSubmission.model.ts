@@ -75,7 +75,7 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     caseId: {
       type: String,
       required: false,
-      unique: true,
+      // unique: true,
     },
   },
   {
@@ -87,3 +87,10 @@ export const InitialSubmission = model<IInitialSubmission>(
   "submittionForm",
   initialSubmissionSchema
 );
+
+initialSubmissionSchema.pre("save", function (next) {
+  if (!this.caseId) {
+    this.caseId = this._id.toString().slice(-6);
+  }
+  next();
+});
