@@ -59,9 +59,23 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       type: String,
       required: false,
     },
+    document: {
+      type: [String],
+      required: false,
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+    },
+    status: {
+      type: String,
+      enum: ["pending", "underReview", "finalReview", "completed", "rejected"],
+      default: "pending",
+    },
+    caseId: {
+      type: String,
+      required: false,
+      unique: true,
     },
   },
   {

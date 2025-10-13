@@ -15,5 +15,8 @@ export interface IInitialSubmission {
   typeOfFiling: "Jurisdiction" | "ProceduralIssue" | "SubjectMatter";
   evidence?: string[];
   link?: string;
+  document?: string[];
   user: Types.ObjectId;
+  status: "pending" | "underReview" | "finalReview" | "completed" | "rejected";
+  caseId: string;
 }
