@@ -12,9 +12,11 @@ const router = Router();
 router
   .route("/support")
   .post(
-    auth(USER_ROLES.USER, USER_ROLES.ADMIN, USER_ROLES.SUPER_ADMIN),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
     fileUploadHandler() as any,
-    validateRequest(TechnicalSupportValidation.createTechnicalSupportValidation),
+    validateRequest(
+      TechnicalSupportValidation.createTechnicalSupportValidation
+    ),
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const payload = req.body;
@@ -36,20 +38,22 @@ router
     TechnicalSupportController.createTechnicalSupport
   )
   .get(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
     TechnicalSupportController.getAllTechnicalSupport
   );
 
 router
   .route("/support/:id")
   .get(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
     TechnicalSupportController.getSingleTechnicalSupport
   )
   .patch(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
     fileUploadHandler() as any,
-    validateRequest(TechnicalSupportValidation.updateTechnicalSupportValidation),
+    validateRequest(
+      TechnicalSupportValidation.updateTechnicalSupportValidation
+    ),
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         const payload = req.body;
@@ -67,9 +71,8 @@ router
     TechnicalSupportController.updateTechnicalSupport
   )
   .delete(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
     TechnicalSupportController.deleteTechnicalSupport
   );
-
 
 export const TechnicalSupportRoutes = router;
