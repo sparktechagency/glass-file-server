@@ -15,9 +15,10 @@ export default {
     jwtRefreshExpiresIn: process.env.JWT_EXPIRE_IN!,
   },
   stripe: {
-    stripeSecretKey: process.env.STRIPE_API_SECRET,
-    webhookSecret: process.env.WEBHOOK_SECRET,
-    paymentSuccess: process.env.WEBHOOK_SECRET,
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY!,
+    webhookSecret: process.env.WEBHOOK_SECRET!,
+    paymentSuccess: process.env.PAYMENT_SUCCESS!,
+    paymentFailed: process.env.PAYMENT_FAILED!,
   },
   email: {
     from: process.env.EMAIL_FROM,

@@ -59,18 +59,18 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       type: String,
       required: false,
     },
-    document: {
-      type: [String],
-      required: false,
-    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
     status: {
       type: String,
-      enum: ["pending", "underReview", "finalReview", "completed", "rejected"],
+      enum: ["pending", "accepted", "rejected"],
       default: "pending",
+    },
+    paymentIntentId: {
+      type: String,
+      required: false,
     },
     caseId: {
       type: String,

@@ -1,6 +1,7 @@
 import { Types } from "mongoose";
 
 export interface IInitialSubmission {
+  _id?: Types.ObjectId;
   state: string;
   fastName: string;
   middleName: string;
@@ -17,6 +18,8 @@ export interface IInitialSubmission {
   link?: string;
   document?: string[];
   user: Types.ObjectId;
-  status: "pending" | "underReview" | "finalReview" | "completed" | "rejected";
+  status: "pending" | "accepted" | "rejected";
+  paymentIntentId?: string;
   caseId: string;
+  paymentStatus: "pending" | "succeeded" | "failed";
 }
