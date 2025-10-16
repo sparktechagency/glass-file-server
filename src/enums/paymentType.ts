@@ -1,0 +1,4 @@
+export enum PAYMENT_TYPE {
+  STANDARD = "STANDARD",
+  EXPEDITED = "EXPEDITED",
+}

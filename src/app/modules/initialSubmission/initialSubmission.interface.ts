@@ -1,4 +1,7 @@
 import { Types } from "mongoose";
+import { PAYMENT_STATUS } from "../../../enums/paymentStatus";
+import { SUBMITTION_STATUS } from "../../../enums/submittionStatus";
+import { TYPE_OF_FILLING } from "../../../enums/typeOfFilling";
 
 export interface IInitialSubmission {
   _id?: Types.ObjectId;
@@ -13,13 +16,13 @@ export interface IInitialSubmission {
   respondentDOB: Date;
   respondentEmail: string;
   allegation: string[];
-  typeOfFiling: "Jurisdiction" | "ProceduralIssue" | "SubjectMatter";
+  typeOfFiling: TYPE_OF_FILLING;
   evidence?: string[];
   link?: string;
   document?: string[];
   user: Types.ObjectId;
-  status: "pending" | "accepted" | "rejected";
+  status: SUBMITTION_STATUS;
   paymentIntentId?: string;
   caseId: string;
-  paymentStatus: "pending" | "succeeded" | "failed";
+  isPaid?: boolean;
 }

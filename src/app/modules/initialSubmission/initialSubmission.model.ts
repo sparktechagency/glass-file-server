@@ -1,5 +1,7 @@
 import { model, Schema } from "mongoose";
 import { IInitialSubmission } from "./initialSubmission.interface";
+import { SUBMITTION_STATUS } from "../../../enums/submittionStatus";
+import { TYPE_OF_FILLING } from "../../../enums/typeOfFilling";
 
 const initialSubmissionSchema = new Schema<IInitialSubmission>(
   {
@@ -45,8 +47,11 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     },
     typeOfFiling: {
       type: String,
+      enum: TYPE_OF_FILLING,
+      default: TYPE_OF_FILLING.JURISDICTION,
       required: true,
     },
+
     allegation: {
       type: [String],
       required: true,
@@ -65,8 +70,8 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     },
     status: {
       type: String,
-      enum: ["pending", "accepted", "rejected"],
-      default: "pending",
+      enum: SUBMITTION_STATUS,
+      default: SUBMITTION_STATUS.PENDING,
     },
     paymentIntentId: {
       type: String,
@@ -76,6 +81,15 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       type: String,
       required: false,
       // unique: true,
+    },
+    isPaid: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    document: {
+      type: [String],
+      required: false,
     },
   },
   {

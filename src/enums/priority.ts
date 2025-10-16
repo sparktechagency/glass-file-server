@@ -1,0 +1,4 @@
+export enum PRIORITY {
+    STANDARD = "STANDARD",
+    EXPEDITED = "EXPEDITED",
+}
