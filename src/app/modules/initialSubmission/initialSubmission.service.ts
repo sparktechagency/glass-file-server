@@ -9,16 +9,12 @@ import { JwtPayload } from "jsonwebtoken";
     create initial submission into database
 */
 
-const createInitialSubmissionIntoDB = async (data: IInitialSubmission, user: JwtPayload) => {
-    data.user = user.id;
-  const result = await InitialSubmission.create(data);
-  if (!result) {
-    throw new ApiError(
-      StatusCodes.BAD_REQUEST,
-      `Failed to create initial submission`
-    );
-  }
-  return result;
+const createInitialSubmissionIntoDB = async (
+  data: IInitialSubmission,
+  user: JwtPayload
+) => {
+  data.user = user.id;
+  return await InitialSubmission.create(data);
 };
 
 /**
@@ -27,7 +23,7 @@ const createInitialSubmissionIntoDB = async (data: IInitialSubmission, user: Jwt
 const getAllInitialSubmissionFromDB = async (
   query: Record<string, unknown>
 ) => {
-  const result = await new QueryBuilder(InitialSubmission.find().lean(), query)
+  const result = new QueryBuilder(InitialSubmission.find().lean(), query)
     .fields()
     .paginate()
     .sort()
@@ -61,8 +57,13 @@ const getSingleInitialSubmissionFromDB = async (id: string) => {
 /*
 update initial submission
 */
-const updateInitialSubmissionFromDB = async (id: string, data: IInitialSubmission) => {
-  const result = await InitialSubmission.findByIdAndUpdate(id, data, { new: true });
+const updateInitialSubmissionFromDB = async (
+  id: string,
+  data: IInitialSubmission
+) => {
+  const result = await InitialSubmission.findByIdAndUpdate(id, data, {
+    new: true,
+  });
   if (!result) {
     throw new ApiError(
       StatusCodes.BAD_REQUEST,
