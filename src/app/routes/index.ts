@@ -5,6 +5,7 @@ import { InitialSubmissionRoutes } from "../modules/initialSubmission/initialSub
 import { MisuseReportRoutes } from "../modules/misuseReport/misuseReport.routes";
 import { TechnicalSupportRoutes } from "../modules/technicalSupport/technicalSupport.routes";
 import { initialSubmissionPayRoutes } from "../modules/initialSubmissionPay/initialSubmissionPay.routes";
+import { ConnectingAccountRoutes } from "../modules/connectingAccount/connectingAccount.routes";
 
 const router = express.Router();
 
@@ -15,6 +16,7 @@ const apiRoutes = [
   { path: "/misuse", route: MisuseReportRoutes },
   { path: "/technical", route: TechnicalSupportRoutes },
   { path: "/initial-submission", route: initialSubmissionPayRoutes },
+  { path: "/connecting-account", route: ConnectingAccountRoutes },
 ];
 
 apiRoutes.forEach((route) => router.use(route.path, route.route));
