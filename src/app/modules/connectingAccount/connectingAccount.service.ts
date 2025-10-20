@@ -31,7 +31,7 @@ const createConnectingAccountIntoDB = async (user: JwtPayload) => {
     },
     business_profile: {
       mcc: 7299,
-      product_description: "Car rental services",
+      product_description: "Glass File service.",
       url: config.stripe.CONNECTED_ACCOUNT_CREATE_URL,
     },
   });
@@ -46,9 +46,13 @@ const createConnectingAccountIntoDB = async (user: JwtPayload) => {
     return_url: config.stripe.CONNECTED_ACCOUNT_CREATE_URL,
     type: "account_onboarding",
   });
+  
   const updateAccount = await User.findByIdAndUpdate(
     user.id,
-    { "accountInformation.stripeAccountId": account.id },
+    {
+      "accountInformation.stripeAccountId": account.id,
+      "accountInformation.accountUrl": accountLink.url,
+    },
     { new: true }
   );
   if (!updateAccount) {

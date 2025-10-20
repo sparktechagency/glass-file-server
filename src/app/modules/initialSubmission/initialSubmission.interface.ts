@@ -25,4 +25,5 @@ export interface IInitialSubmission {
   paymentIntentId?: string;
   caseId: string;
   isPaid?: boolean;
+  submittionType: "initialSubmittion";
 }

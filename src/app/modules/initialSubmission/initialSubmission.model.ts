@@ -91,6 +91,11 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       type: [String],
       required: false,
     },
+    submittionType: {
+      type: String,
+      enum: ["initialSubmittion"],
+      default: "initialSubmittion",
+    },
   },
   {
     timestamps: true,
