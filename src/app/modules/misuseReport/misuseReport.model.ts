@@ -59,9 +59,21 @@ const misuseReportSchema = new Schema<IMisuseReport>(
       type: Boolean,
       required: [true, "Affirmation and signature is required"],
     },
+    submissionType: {
+      type: String,
+      enum: ["misuseReport"],
+      default: "misuseReport",
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
+    },
+    progressStatus: {
+      type: String,
+      enum: ["pending", "review"],
+      default: "pending",
+      required: true,
     },
   },
   {

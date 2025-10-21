@@ -17,4 +17,6 @@ export interface IMisuseReport {
   link?: string;
   resolutionRequested: string[];
   affirmationAndSignature: boolean;
+  submissionType: "misuseReport";
+  progressStatus: "pending" | "review";
 }
