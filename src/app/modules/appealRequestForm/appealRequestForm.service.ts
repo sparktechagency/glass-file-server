@@ -32,6 +32,8 @@ const getAllAppealRequestFormFromDB = async (
       "justification",
       "reviewOption",
       "declarationAndSubmission",
+      "submissionType",
+      "progressStatus",
     ])
     .paginate()
     .fields();

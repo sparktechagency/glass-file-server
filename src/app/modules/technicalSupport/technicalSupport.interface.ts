@@ -19,9 +19,10 @@ export interface ITechnicalSupportRoutes {
   receiveSupport: "phone" | "email";
   issueResolved: boolean;
   signature?: string;
-
   scheduleCall: boolean;
   digitalSignature?: string;
   DOB?: Date;
   user: Types.ObjectId;
+  submissionType: "technicalSupport";
+  progressStatus: "pending" | "review";
 }

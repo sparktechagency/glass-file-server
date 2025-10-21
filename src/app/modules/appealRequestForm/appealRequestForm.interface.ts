@@ -1,9 +1,8 @@
 import { Types } from "mongoose";
 
 export interface IAppealRequestForm {
-  submittionType: "appealRequest";
   appealGrounds: string;
-  supportingMaterials: string[];
+  supportingDocument: string[];
   justification: string;
   reviewOption:
     | "NewJurorPanel"
@@ -11,4 +10,6 @@ export interface IAppealRequestForm {
     | "PlatformAppealsBoard";
   declarationAndSubmission: string;
   user: Types.ObjectId;
+  submissionType: "appealRequest";
+  progressStatus: "pending" | "review";
 }

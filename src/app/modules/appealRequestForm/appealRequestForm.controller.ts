@@ -29,7 +29,7 @@ const getAllAppealRequestForm = catchAsync(
       statusCode: StatusCodes.OK,
       message: "Appeal request form retrieved successfully",
       pagination: result.meta,
-      data: result.data,
+      data: result?.result,
     });
   }
 );

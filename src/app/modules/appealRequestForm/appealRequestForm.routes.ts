@@ -15,10 +15,10 @@ router
   .route("/request")
   .post(
     auth(USER_ROLES.USER),
+    fileUploadHandler() as any,
     validateRequest(
       AppealRequestFormValidation.createAppealRequestFormValidation
     ),
-    fileUploadHandler() as any,
     async (req: any, _res: Response, next: NextFunction) => {
       try {
         const supportingDocument = getMultipleFilesPath(

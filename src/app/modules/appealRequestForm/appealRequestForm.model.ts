@@ -3,19 +3,13 @@ import { IAppealRequestForm } from "./appealRequestForm.interface";
 
 const appealRequestFormSchema = new Schema<IAppealRequestForm>(
   {
-    submittionType: {
-      type: String,
-      enum: ["appealRequest"],
-      default: "appealRequest",
-      required: true,
-    },
     appealGrounds: {
       type: String,
       required: true,
     },
-    supportingMaterials: {
+    supportingDocument: {
       type: [String],
-      required: true,
+      required: [true, "Supporting documents are required"],
     },
     justification: {
       type: String,
@@ -33,6 +27,18 @@ const appealRequestFormSchema = new Schema<IAppealRequestForm>(
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
+    },
+    submissionType: {
+      type: String,
+      enum: ["appealRequest"],
+      default: "appealRequest",
+      required: true,
+    },
+    progressStatus: {
+      type: String,
+      enum: ["pending", "review"],
+      default: "pending",
       required: true,
     },
   },

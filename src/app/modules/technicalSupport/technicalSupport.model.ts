@@ -86,6 +86,17 @@ const technicalSupportSchema = new mongoose.Schema<ITechnicalSupportRoutes>(
       ref: "User",
       required: [true, "User is required"],
     },
+    submissionType: {
+      type: String,
+      enum: ["technicalSupport"],
+      default: "technicalSupport",
+    },
+    progressStatus: {
+      type: String,
+      enum: ["pending", "review"],
+      default: "pending",
+      required: true,
+    },
   },
   {
     timestamps: true,

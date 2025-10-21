@@ -18,7 +18,7 @@ const apiRoutes = [
   { path: "/technical", route: TechnicalSupportRoutes },
   { path: "/initial-submission", route: initialSubmissionPayRoutes },
   { path: "/connecting-account", route: ConnectingAccountRoutes },
-  { path: "/appeal-request", route: AppealRequestFormRoutes },
+  { path: "/appeal", route: AppealRequestFormRoutes },
 ];
 
 apiRoutes.forEach((route) => router.use(route.path, route.route));
