@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IAppealRequestForm } from "./appealRequestForm.interface";
+import { STATUS } from "../../../enums/status";
 
 const appealRequestFormSchema = new Schema<IAppealRequestForm>(
   {
@@ -35,10 +36,10 @@ const appealRequestFormSchema = new Schema<IAppealRequestForm>(
       default: "appealRequest",
       required: true,
     },
-    progressStatus: {
+    status: {
       type: String,
-      enum: ["pending", "review"],
-      default: "pending",
+      enum: Object.values(STATUS),
+      default: STATUS.PENDING,
       required: true,
     },
   },

@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { STATUS } from "../../../enums/status";
 
 export interface IRespondentSubmission {
   responseDeclaration: string;
@@ -7,6 +8,6 @@ export interface IRespondentSubmission {
   signatureDate: string;
   ipAddress: string;
   submissionType: "respondentSubmission";
-  progressStatus: "pending" | "review";
+  status: STATUS;
   user: Types.ObjectId;
 }

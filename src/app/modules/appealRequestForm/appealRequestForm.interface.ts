@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { STATUS } from "../../../enums/status";
 
 export interface IAppealRequestForm {
   appealGrounds: string;
@@ -11,5 +12,5 @@ export interface IAppealRequestForm {
   declarationAndSubmission: string;
   user: Types.ObjectId;
   submissionType: "appealRequest";
-  progressStatus: "pending" | "review";
+  status: STATUS;
 }

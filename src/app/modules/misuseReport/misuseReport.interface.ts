@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
 import { EMPLOYEE_TYPE } from "../../../enums/employee";
+import { STATUS } from "../../../enums/status";
 
 export interface IMisuseReport {
   user: Types.ObjectId;
@@ -18,5 +19,5 @@ export interface IMisuseReport {
   resolutionRequested: string[];
   affirmationAndSignature: boolean;
   submissionType: "misuseReport";
-  progressStatus: "pending" | "review";
+  status: STATUS;
 }

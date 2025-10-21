@@ -8,6 +8,7 @@ import { initialSubmissionPayRoutes } from "../modules/initialSubmissionPay/init
 import { ConnectingAccountRoutes } from "../modules/connectingAccount/connectingAccount.routes";
 import { AppealRequestFormRoutes } from "../modules/appealRequestForm/appealRequestForm.routes";
 import { RespondentSubmissionRoutes } from "../modules/respondentSubmission/respondentSubmission.routes";
+import { DashboardSubmittionRoutes } from "../modules/dashboardSubmittion/dashboardSubmittion.routes";
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ const apiRoutes = [
   { path: "/connecting-account", route: ConnectingAccountRoutes },
   { path: "/appeal", route: AppealRequestFormRoutes },
   { path: "/respondent", route: RespondentSubmissionRoutes },
+  { path: "/submission", route: DashboardSubmittionRoutes },
 ];
 
 apiRoutes.forEach((route) => router.use(route.path, route.route));
