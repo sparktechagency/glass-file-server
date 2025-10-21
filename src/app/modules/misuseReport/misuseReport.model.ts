@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { IMisuseReport } from "./misuseReport.interface";
 import { EMPLOYEE_TYPE } from "../../../enums/employee";
+import { STATUS } from "../../../enums/status";
 
 const misuseReportSchema = new Schema<IMisuseReport>(
   {
@@ -69,10 +70,10 @@ const misuseReportSchema = new Schema<IMisuseReport>(
       ref: "User",
       required: true,
     },
-    progressStatus: {
+    status: {
       type: String,
-      enum: ["pending", "review"],
-      default: "pending",
+      enum: Object.values(STATUS),
+      default: STATUS.PENDING,
       required: true,
     },
   },

@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { IRespondentSubmission } from "./respondentSubmission.interface";
+import { STATUS } from "../../../enums/status";
 
 const respondentSubmissionSchema = new Schema<IRespondentSubmission>(
   {
@@ -34,11 +35,11 @@ const respondentSubmissionSchema = new Schema<IRespondentSubmission>(
       default: "respondentSubmission",
       required: [true, "Submission type is required"],
     },
-    progressStatus: {
+    status: {
       type: String,
-      enum: ["pending", "review"],
-      default: "pending",
-      required: [true, "Progress status is required"],
+      enum: Object.values(STATUS),
+      default: STATUS.PENDING,
+      required: [true, "Status is required"],
     },
   },
   {

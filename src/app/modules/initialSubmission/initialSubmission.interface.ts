@@ -1,7 +1,6 @@
 import { Types } from "mongoose";
-import { PAYMENT_STATUS } from "../../../enums/paymentStatus";
-import { SUBMITTION_STATUS } from "../../../enums/submittionStatus";
 import { TYPE_OF_FILLING } from "../../../enums/typeOfFilling";
+import { STATUS } from "../../../enums/status";
 
 export interface IInitialSubmission {
   _id?: Types.ObjectId;
@@ -21,7 +20,7 @@ export interface IInitialSubmission {
   link?: string;
   document?: string[];
   user: Types.ObjectId;
-  status: SUBMITTION_STATUS;
+  status: STATUS;
   paymentIntentId?: string;
   caseId: string;
   isPaid?: boolean;

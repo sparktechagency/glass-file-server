@@ -2,6 +2,7 @@ import { model, Schema } from "mongoose";
 import { IInitialSubmission } from "./initialSubmission.interface";
 import { SUBMITTION_STATUS } from "../../../enums/submittionStatus";
 import { TYPE_OF_FILLING } from "../../../enums/typeOfFilling";
+import { STATUS } from "../../../enums/status";
 
 const initialSubmissionSchema = new Schema<IInitialSubmission>(
   {
@@ -70,8 +71,8 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     },
     status: {
       type: String,
-      enum: SUBMITTION_STATUS,
-      default: SUBMITTION_STATUS.PENDING,
+      enum: Object.values(STATUS),
+      default: STATUS.PENDING,
     },
     paymentIntentId: {
       type: String,
