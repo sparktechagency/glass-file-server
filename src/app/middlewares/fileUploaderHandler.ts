@@ -87,7 +87,7 @@ const fileUploadHandler = () => {
   // @ts-ignore
   const upload = multer({ storage: storage, fileFilter: filterFilter }).fields([
     { name: "image", maxCount: 3 },
-    { name: "evidence", maxCount: 3 },
+    { name: "evidence", maxCount: 5 },
     { name: "supportingDocument", maxCount: 5 },
     { name: "attachment", maxCount: 3 },
   ]);
