@@ -42,19 +42,19 @@ router
 
   // get all initial submission
   .get(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.MODERATOR, USER_ROLES.USER),
     InitialSubmissionController.getAllInitialSubmission
   );
 // get single initial submission
 router
   .route("/submission/:id")
   .get(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.MODERATOR, USER_ROLES.USER),
     InitialSubmissionController.getSingleInitialSubmission
   )
   // update initial submission
   .patch(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.MODERATOR, USER_ROLES.USER),
     fileUploadHandler() as any,
     async (req: Request, res: Response, next: NextFunction) => {
       try {
@@ -80,7 +80,7 @@ router
 
   // delete initial submission
   .delete(
-    auth(USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.MODERATOR, USER_ROLES.USER),
     InitialSubmissionController.deleteInitialSubmission
   );
 
