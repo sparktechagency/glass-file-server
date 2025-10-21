@@ -80,7 +80,7 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     caseId: {
       type: String,
       required: false,
-      // unique: true,
+      unique: true,
     },
     isPaid: {
       type: Boolean,
@@ -90,6 +90,11 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
     document: {
       type: [String],
       required: false,
+    },
+    submittionType: {
+      type: String,
+      enum: ["initialSubmittion"],
+      default: "initialSubmittion",
     },
   },
   {
@@ -102,9 +107,12 @@ export const InitialSubmission = model<IInitialSubmission>(
   initialSubmissionSchema
 );
 
-initialSubmissionSchema.pre("save", function (next) {
-  if (!this.caseId) {
-    this.caseId = this._id.toString().slice(-6);
-  }
-  next();
-});
+// initialSubmissionSchema.pre("validate", function (next) {
+//   if (!this.caseId) {
+//     const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
+//     const timePart = Date.now().toString().slice(-4);
+//     this.caseId = `${randomPart}${timePart}`;
+//     console.log("caseId=====>>>>", this.caseId);
+//   }
+//   next();
+// });

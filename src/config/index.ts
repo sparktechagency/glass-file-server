@@ -19,7 +19,9 @@ export default {
     webhookSecret: process.env.WEBHOOK_SECRET!,
     paymentSuccess: process.env.PAYMENT_SUCCESS!,
     paymentFailed: process.env.PAYMENT_FAILED!,
-    CONNECTED_ACCOUNT_CREATE_URL: process.env.CONNECTED_ACCOUNT_CREATE_URL,
+    CONNECTED_ACCOUNT_CREATE_URL: process.env.CONNECTED_ACCOUNT_CREATE_URL!,
+    CONNECTED_ACCOUNT_SUCCESS_URL: process.env.CONNECTED_ACCOUNT_SUCCESS_URL!,
+    CONNECTED_ACCOUNT_FAILD_URL: process.env.CONNECTED_ACCOUNT_FAILD_URL!,
   },
   email: {
     from: process.env.EMAIL_FROM,

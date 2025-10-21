@@ -1,4 +1,6 @@
 import { Types } from "mongoose";
+import { ISSUE_OCCUR } from "../../../enums/issueOccur";
+import { USING_PLATFORM } from "../../../enums/usingPlatform";
 
 export interface ITechnicalSupportRoutes {
   name: string;
@@ -12,20 +14,15 @@ export interface ITechnicalSupportRoutes {
   operationgSystem: string;
   browserApp: string;
   attachment: string[];
-  issueOccur: "once" | "occasionally" | "frequently" | "always";
-  usingPlatform: "yes" | "no" | "partially";
-  // affectedUser:
-  //   | "justMe"
-  //   | "myTeam"
-  //   | "myDepartment"
-  //   | "mulipleDepartment"
-  //   | "entireOrganization";
+  issueOccur: ISSUE_OCCUR;
+  usingPlatform: USING_PLATFORM;
   receiveSupport: "phone" | "email";
   issueResolved: boolean;
   signature?: string;
-  
   scheduleCall: boolean;
   digitalSignature?: string;
   DOB?: Date;
   user: Types.ObjectId;
+  submissionType: "technicalSupport";
+  progressStatus: "pending" | "review";
 }

@@ -1,5 +1,6 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { IMisuseReport } from "./misuseReport.interface";
+import { EMPLOYEE_TYPE } from "../../../enums/employee";
 
 const misuseReportSchema = new Schema<IMisuseReport>(
   {
@@ -33,7 +34,8 @@ const misuseReportSchema = new Schema<IMisuseReport>(
       employee: {
         type: String,
         required: [true, "Employee type is required"],
-        enum: ["initiator", "respondent", "juror", "moderator", "unknownField"],
+        enum: Object.values(EMPLOYEE_TYPE),
+        default: EMPLOYEE_TYPE.UNKNOWN,
       },
     },
     description: {
@@ -57,9 +59,21 @@ const misuseReportSchema = new Schema<IMisuseReport>(
       type: Boolean,
       required: [true, "Affirmation and signature is required"],
     },
+    submissionType: {
+      type: String,
+      enum: ["misuseReport"],
+      default: "misuseReport",
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
+    },
+    progressStatus: {
+      type: String,
+      enum: ["pending", "review"],
+      default: "pending",
+      required: true,
     },
   },
   {

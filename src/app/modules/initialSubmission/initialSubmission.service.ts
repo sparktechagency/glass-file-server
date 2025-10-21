@@ -14,7 +14,17 @@ const createInitialSubmissionIntoDB = async (
   user: JwtPayload
 ) => {
   data.user = user.id;
-  return await InitialSubmission.create(data);
+  const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
+  const timePart = Date.now().toString().slice(-4);
+  data.caseId = `${randomPart}${timePart}`;
+  const result = await InitialSubmission.create(data);
+  if (result) {
+    throw new ApiError(
+      StatusCodes.BAD_REQUEST,
+      `Failed to create initial submission`
+    );
+  }
+  return result;
 };
 
 /**

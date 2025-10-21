@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import { ITechnicalSupportRoutes } from "./technicalSupport.interface";
+import { ISSUE_OCCUR } from "../../../enums/issueOccur";
+import { USING_PLATFORM } from "../../../enums/usingPlatform";
 
 const technicalSupportSchema = new mongoose.Schema<ITechnicalSupportRoutes>(
   {
@@ -53,12 +55,14 @@ const technicalSupportSchema = new mongoose.Schema<ITechnicalSupportRoutes>(
     },
     issueOccur: {
       type: String,
-      enum: ["once", "occasionally", "frequently", "always"],
+      enum: Object.values(ISSUE_OCCUR),
+      default: ISSUE_OCCUR.ONCE,
       required: [true, "Issue occur is required"],
     },
     usingPlatform: {
       type: String,
-      enum: ["yes", "no", "partially"],
+      enum: Object.values(USING_PLATFORM),
+      default: USING_PLATFORM.PARTIALLY,
       required: [true, "Using platform is required"],
     },
     receiveSupport: {
@@ -81,6 +85,17 @@ const technicalSupportSchema = new mongoose.Schema<ITechnicalSupportRoutes>(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: [true, "User is required"],
+    },
+    submissionType: {
+      type: String,
+      enum: ["technicalSupport"],
+      default: "technicalSupport",
+    },
+    progressStatus: {
+      type: String,
+      enum: ["pending", "review"],
+      default: "pending",
+      required: true,
     },
   },
   {

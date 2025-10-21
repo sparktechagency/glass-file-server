@@ -1,4 +1,5 @@
 import { Types } from "mongoose";
+import { EMPLOYEE_TYPE } from "../../../enums/employee";
 
 export interface IMisuseReport {
   user: Types.ObjectId;
@@ -9,11 +10,13 @@ export interface IMisuseReport {
   subjectOfTheComplaint: {
     name: string;
     email: string;
-    employee: "initiator" | "respondent" | "juror" | "moderator" | "unknown";
+    employee: EMPLOYEE_TYPE;
   };
   description: string;
   supportingDocument?: string[];
   link?: string;
   resolutionRequested: string[];
   affirmationAndSignature: boolean;
+  submissionType: "misuseReport";
+  progressStatus: "pending" | "review";
 }

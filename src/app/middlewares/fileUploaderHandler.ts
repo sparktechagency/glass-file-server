@@ -32,7 +32,7 @@ const fileUploadHandler = () => {
           break;
         case "supportingDocument":
           uploadDir = path.join(baseUploadDir, "supportingDocument");
-          break;  
+          break;
         case "attachment":
           uploadDir = path.join(baseUploadDir, "attachment");
           break;
@@ -60,14 +60,19 @@ const fileUploadHandler = () => {
   //file filter
   const filterFilter = (req: Request, file: any, cb: FileFilterCallback) => {
     // console.log("file handler",file)
-    if (file.fieldname === "image" || file.fieldname === "evidence" || file.fieldname === "supportingDocument" || file.fieldname === "attachment") {
+    if (
+      file.fieldname === "image" ||
+      file.fieldname === "evidence" ||
+      file.fieldname === "supportingDocument" ||
+      file.fieldname === "attachment"
+    ) {
       if (
         file.mimetype === "image/jpeg" ||
         file.mimetype === "image/png" ||
         file.mimetype === "image/jpg"
       ) {
         cb(null, true);
-      } else {  
+      } else {
         cb(
           new ApiError(
             StatusCodes.BAD_REQUEST,
@@ -83,7 +88,7 @@ const fileUploadHandler = () => {
   const upload = multer({ storage: storage, fileFilter: filterFilter }).fields([
     { name: "image", maxCount: 3 },
     { name: "evidence", maxCount: 3 },
-    { name: "supportingDocument", maxCount: 3 },
+    { name: "supportingDocument", maxCount: 5 },
     { name: "attachment", maxCount: 3 },
   ]);
   return upload;
