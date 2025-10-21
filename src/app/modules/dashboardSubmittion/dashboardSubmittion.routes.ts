@@ -25,4 +25,54 @@ router.get(
   DashboardSubmittionController.getDashboardRespondentSubmission
 );
 
+// update status
+router.patch(
+  "/initial/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.updateStatusOfInitialSubmission
+);
+
+router.patch(
+  "/misuse/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.updateStatusOfMisuseReport
+);
+
+router.patch(
+  "/appeal/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.updateStatusOfAppealRequest
+);
+
+router.patch(
+  "/respondent/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.updateStatusOfRespondentSubmission
+);
+
+// get single submission
+router.get(
+  "/initial/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.getSingleInitialSubmission
+);
+
+router.get(
+  "/misuse/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.getSingleMisuseReport
+);
+
+router.get(
+  "/appeal/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.getSingleAppealRequest
+);
+
+router.get(
+  "/respondent/:id",
+  auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+  DashboardSubmittionController.getSingleRespondentSubmission
+);
+
 export const DashboardSubmittionRoutes = router;

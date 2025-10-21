@@ -68,9 +68,143 @@ const getDashboardRespondentSubmission = catchAsync(
   }
 );
 
+// update status
+const updateStatusOfInitialSubmission = catchAsync(
+  async (req: Request, res: Response) => {
+    const result =
+      await DashboardSubmittionService.updateStatusOfInitialSubmission(
+        req.params.id,
+        req.body.status
+      );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Status updated successfully",
+      data: result,
+    });
+  }
+);
+
+// update status of misuse report
+const updateStatusOfMisuseReport = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await DashboardSubmittionService.updateStatusOfMisuseReport(
+      req.params.id,
+      req.body.status
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Status updated successfully",
+      data: result,
+    });
+  }
+);
+
+// update status of appeal request
+const updateStatusOfAppealRequest = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await DashboardSubmittionService.updateStatusOfAppealRequest(
+      req.params.id,
+      req.body.status
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Status updated successfully",
+      data: result,
+    });
+  }
+);
+
+// update status of respondent submission
+const updateStatusOfRespondentSubmission = catchAsync(
+  async (req: Request, res: Response) => {
+    const result =
+      await DashboardSubmittionService.updateStatusOfRespondentSubmission(
+        req.params.id,
+        req.body.status
+      );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Status updated successfully",
+      data: result,
+    });
+  }
+);
+
+// get single submission
+const getSingleInitialSubmission = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await DashboardSubmittionService.getSingleInitialSubmission(
+      req.params.id
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Initial submission retrieved successfully",
+      data: result,
+    });
+  }
+);
+
+const getSingleMisuseReport = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await DashboardSubmittionService.getSingleMisuseReport(
+      req.params.id
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Misuse report retrieved successfully",
+      data: result,
+    });
+  }
+);
+
+const getSingleAppealRequest = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await DashboardSubmittionService.getSingleAppealRequest(
+      req.params.id
+    );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Appeal request retrieved successfully",
+      data: result,
+    });
+  }
+);
+
+const getSingleRespondentSubmission = catchAsync(
+  async (req: Request, res: Response) => {
+    const result =
+      await DashboardSubmittionService.getSingleRespondentSubmission(
+        req.params.id
+      );
+    sendResponse(res, {
+      success: true,
+      statusCode: StatusCodes.OK,
+      message: "Respondent submission retrieved successfully",
+      data: result,
+    });
+  }
+);
+
 export const DashboardSubmittionController = {
   getDashboardIntialSubmission,
   getDashboardMisuseReport,
   getDashboardAppealRequest,
   getDashboardRespondentSubmission,
+  //   update status
+  updateStatusOfInitialSubmission,
+  updateStatusOfMisuseReport,
+  updateStatusOfAppealRequest,
+  updateStatusOfRespondentSubmission,
+  //   get single submission
+  getSingleInitialSubmission,
+  getSingleMisuseReport,
+  getSingleAppealRequest,
+  getSingleRespondentSubmission,
 };
