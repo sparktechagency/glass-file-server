@@ -20,9 +20,10 @@ export type IUser = {
     role: USER_ROLES;
     password: string;
     confirmPassword: string;
-    provider:"google"|"email";
+    provider: "google" | "email";
     profile: string;
     verified: boolean;
+    isBan: boolean;
     authentication?: IAuthenticationProps;
     accountInformation?: IStripeAccountInfo;
 }

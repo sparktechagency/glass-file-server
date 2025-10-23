@@ -18,7 +18,7 @@ const createInitialSubmissionIntoDB = async (
   const timePart = Date.now().toString().slice(-4);
   data.caseId = `${randomPart}${timePart}`;
   const result = await InitialSubmission.create(data);
-  if (result) {
+  if (!result) {
     throw new ApiError(
       StatusCodes.BAD_REQUEST,
       `Failed to create initial submission`

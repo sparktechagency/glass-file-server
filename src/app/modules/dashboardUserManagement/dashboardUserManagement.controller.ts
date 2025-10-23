@@ -13,13 +13,24 @@ const getAllUsersFromDB = catchAsync(async (req: Request, res: Response) => {
     success: true,
     statusCode: StatusCodes.OK,
     message: "All users retrieved successfully",
-    // @ts-ignore
     pagination: result.meta,
-    // @ts-ignore
     data: result.data,
   });
 });
 
+// take action on user
+const takeActionOnUser = catchAsync(async (req: Request, res: Response) => {
+  const result = await DashboardUserManagementService.takeActionOnUserIntoDB(
+    req.params.id,
+    req.body
+  );
+  sendResponse(res, {
+    success: true,
+    statusCode: StatusCodes.OK,
+    message: "User action taken successfully",
+    data: result,
+  });
+});
 // update user role
 const updateUserRole = catchAsync(async (req: Request, res: Response) => {
   const result = await DashboardUserManagementService.updateUserRole(
@@ -50,8 +61,27 @@ const createUserAsSuperAdmin = catchAsync(
   }
 );
 
+const getSingleUserAsAAdmin = catchAsync(
+  async (req: Request, res: Response) => {
+    const result =
+      await DashboardUserManagementService.getSingleUserFromDBAsAdmin(
+        // @ts-ignore
+        // req.user!,
+        req.params.id
+      );
+    sendResponse(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: "User fetched successfully",
+      data: result,
+    });
+  }
+);
+
 export const DashboardUserManagementController = {
   getAllUsersFromDB,
   updateUserRole,
   createUserAsSuperAdmin,
+  takeActionOnUser,
+  getSingleUserAsAAdmin,
 };
