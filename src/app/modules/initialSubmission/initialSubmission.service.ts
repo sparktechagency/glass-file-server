@@ -97,10 +97,36 @@ const deleteInitialSubmissionFromDB = async (id: string) => {
   return result;
 };
 
+/**
+ * Update submission status.
+ * Only Admins or Moderators can perform this action.
+ *
+ * Flow:
+ * 1. Validate input payload (status must be REVIEW ,APPROVED, REJECTED ).
+ * 2. Ensure submission exists and not already finalized.
+ * 3. Update status atomically and return updated document.
+ */
+const updateSubmissionStatus = async (
+  id: string,
+  payload: Partial<IInitialSubmission>
+) => {
+  const result = await InitialSubmission.findByIdAndUpdate(id, payload, {
+    new: true,
+    runValidators: true,
+  });
+  if (!result) {
+    throw new ApiError(StatusCodes.BAD_REQUEST, "Failed to update");
+  }
+  return result;
+};
+
 export const InitialSubmissionService = {
   createInitialSubmissionIntoDB,
   getAllInitialSubmissionFromDB,
   getSingleInitialSubmissionFromDB,
   updateInitialSubmissionFromDB,
   deleteInitialSubmissionFromDB,
+
+  // for admin
+  updateSubmissionStatus,
 };

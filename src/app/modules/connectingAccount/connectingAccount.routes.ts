@@ -7,7 +7,7 @@ const router = Router();
 router
   .route("/create")
   .post(
-    auth(USER_ROLES.ADMIN, USER_ROLES.SUPER_ADMIN),
+    auth(USER_ROLES.MODERATOR, USER_ROLES.JUROR, USER_ROLES.SUPER_ADMIN),
     connectingAccountController.createAccountIntoStripe
   );
 
