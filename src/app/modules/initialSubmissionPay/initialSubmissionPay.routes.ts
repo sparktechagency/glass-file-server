@@ -23,7 +23,7 @@ router
     InitialSubmissionPayController.createInitialSubmissionPay
   )
   .get(
-    auth(USER_ROLES.USER, USER_ROLES.ADMIN, USER_ROLES.SUPER_ADMIN),
+    auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
     InitialSubmissionPayController.getAllInitialSubmissionPay
   );
 
@@ -38,11 +38,11 @@ router
 router
   .route("/:id")
   .get(
-    auth(USER_ROLES.USER, USER_ROLES.ADMIN, USER_ROLES.SUPER_ADMIN),
+    auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
     InitialSubmissionPayController.getSingleInitialSubmissionPay
   )
   .delete(
-    auth(USER_ROLES.USER, USER_ROLES.ADMIN, USER_ROLES.SUPER_ADMIN),
+    auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
     InitialSubmissionPayController.deleteInitialSubmissionPay
   );
 

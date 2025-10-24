@@ -15,7 +15,7 @@ const createInitialSubmission = catchAsync(
       success: true,
       statusCode: StatusCodes.OK,
       message: "Initial submission created successfully",
-      data: data
+      data: data,
     });
   }
 );
@@ -79,10 +79,27 @@ const deleteInitialSubmission = catchAsync(
   }
 );
 
+// update status
+// pass the value from here in service
+
+const updateStatus = catchAsync(async (req: Request, res: Response) => {
+  const data = await InitialSubmissionService.updateSubmissionStatus(
+    req.params.id,
+    { status: req.body.status }
+  );
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: `This Document is ${data.status}`,
+    data: data,
+  });
+});
+
 export const InitialSubmissionController = {
   createInitialSubmission,
   getAllInitialSubmission,
   getSingleInitialSubmission,
   updateInitialSubmission,
   deleteInitialSubmission,
+  updateStatus,
 };

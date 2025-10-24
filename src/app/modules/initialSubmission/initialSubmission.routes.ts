@@ -12,7 +12,7 @@ router
   .route("/submission")
   // create initial submission
   .post(
-    auth(USER_ROLES.USER),
+    auth(USER_ROLES.USER, USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
     fileUploadHandler() as any,
 
     async (req: Request, res: Response, next: NextFunction) => {
@@ -82,6 +82,14 @@ router
   .delete(
     auth(USER_ROLES.MODERATOR, USER_ROLES.USER),
     InitialSubmissionController.deleteInitialSubmission
+  );
+
+// for admin dashboard and moderator dashboard
+router
+  .route("/document/:id")
+  .patch(
+    auth(USER_ROLES.MODERATOR, USER_ROLES.SUPER_ADMIN),
+    InitialSubmissionController.updateStatus
   );
 
 export const InitialSubmissionRoutes = router;

@@ -2,10 +2,10 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { StatusCodes } from "http-status-codes";
 import { Morgan } from "./shared/morgan";
-import router from "../src/app/routes";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import session from "express-session";
 import handleStripeWebhook from "./helpers/handleStripeWebhook";
+import router from "./app/routes";
 const app = express();
 
 // webhook
@@ -30,6 +30,7 @@ app.use(express.static("uploads"));
 // Session middleware (must be before passport initialization)
 // @ts-ignore
 app.use(
+  // @ts-ignore
   session({
     secret: "your_secret_key",
     resave: false,

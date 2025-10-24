@@ -34,6 +34,7 @@ const getAllMisuseReport = catchAsync(async (req: Request, res: Response) => {
 })
 
 
+
 /**
  * get single misuse report
  */

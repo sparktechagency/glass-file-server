@@ -1,0 +1,6 @@
+export enum JurorAction {
+  PENDING = "PENDING",
+  ACCEPT = "ACCEPT",
+  REJECT = "REJECT",
+  UNABLETODECIDE = "UNABLETODECIDE",
+}

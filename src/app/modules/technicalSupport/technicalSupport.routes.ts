@@ -12,7 +12,7 @@ const router = Router();
 router
   .route("/support")
   .post(
-    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.MODERATOR, USER_ROLES.USER),
     fileUploadHandler() as any,
     validateRequest(
       TechnicalSupportValidation.createTechnicalSupportValidation
@@ -38,18 +38,18 @@ router
     TechnicalSupportController.createTechnicalSupport
   )
   .get(
-    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.MODERATOR, USER_ROLES.USER),
     TechnicalSupportController.getAllTechnicalSupport
   );
 
 router
   .route("/support/:id")
   .get(
-    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.MODERATOR, USER_ROLES.USER),
     TechnicalSupportController.getSingleTechnicalSupport
   )
   .patch(
-    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.MODERATOR, USER_ROLES.USER),
     fileUploadHandler() as any,
     validateRequest(
       TechnicalSupportValidation.updateTechnicalSupportValidation
@@ -71,7 +71,7 @@ router
     TechnicalSupportController.updateTechnicalSupport
   )
   .delete(
-    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.ADMIN, USER_ROLES.USER),
+    auth(USER_ROLES.SUPER_ADMIN, USER_ROLES.MODERATOR, USER_ROLES.USER),
     TechnicalSupportController.deleteTechnicalSupport
   );
 

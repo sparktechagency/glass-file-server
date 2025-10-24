@@ -1,6 +1,13 @@
 import { Types } from "mongoose";
 import { TYPE_OF_FILLING } from "../../../enums/typeOfFilling";
 import { STATUS } from "../../../enums/status";
+import { JurorAction } from "../../../enums/jurorAction";
+
+export interface IJurorDecision {
+  juror: Types.ObjectId;
+  action: JurorAction;
+  votedAt?: Date;
+}
 
 export interface IInitialSubmission {
   _id?: Types.ObjectId;
@@ -25,4 +32,5 @@ export interface IInitialSubmission {
   caseId: string;
   isPaid?: boolean;
   submittionType: "initialSubmittion";
+  jurorDecisions?: IJurorDecision[];
 }

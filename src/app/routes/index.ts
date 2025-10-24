@@ -9,6 +9,8 @@ import { ConnectingAccountRoutes } from "../modules/connectingAccount/connecting
 import { AppealRequestFormRoutes } from "../modules/appealRequestForm/appealRequestForm.routes";
 import { RespondentSubmissionRoutes } from "../modules/respondentSubmission/respondentSubmission.routes";
 import { DashboardSubmittionRoutes } from "../modules/dashboardSubmittion/dashboardSubmittion.routes";
+import { dashboardUserManagementRoutes } from "../modules/dashboardUserManagement/dashboardUserManagement.routes";
+import { jurorDecissionRoutes } from "../modules/jurorDecisions/jurorDecisions.routes";
 
 const router = express.Router();
 
@@ -23,6 +25,8 @@ const apiRoutes = [
   { path: "/appeal", route: AppealRequestFormRoutes },
   { path: "/respondent", route: RespondentSubmissionRoutes },
   { path: "/submission", route: DashboardSubmittionRoutes },
+  { path: "/users", route: dashboardUserManagementRoutes },
+  { path: "/juror", route: jurorDecissionRoutes },
 ];
 
 apiRoutes.forEach((route) => router.use(route.path, route.route));

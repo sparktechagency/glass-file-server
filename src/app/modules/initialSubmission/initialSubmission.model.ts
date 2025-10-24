@@ -3,6 +3,27 @@ import { IInitialSubmission } from "./initialSubmission.interface";
 import { SUBMITTION_STATUS } from "../../../enums/submittionStatus";
 import { TYPE_OF_FILLING } from "../../../enums/typeOfFilling";
 import { STATUS } from "../../../enums/status";
+import { JurorAction } from "../../../enums/jurorAction";
+
+const jurorDecisionSchema = new Schema(
+  {
+    juror: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    action: {
+      type: String,
+      enum: Object.values(JurorAction),
+      required: true,
+    },
+    votedAt: {
+      type: Date,
+      default: Date.now,
+    },
+  },
+  { _id: false }
+);
 
 const initialSubmissionSchema = new Schema<IInitialSubmission>(
   {
@@ -88,14 +109,15 @@ const initialSubmissionSchema = new Schema<IInitialSubmission>(
       required: false,
       default: false,
     },
-    document: {
-      type: [String],
-      required: false,
-    },
     submittionType: {
       type: String,
       enum: ["initialSubmittion"],
       default: "initialSubmittion",
+    },
+    jurorDecisions: {
+      type: [jurorDecisionSchema],
+      required: false,
+      default: [],
     },
   },
   {
@@ -107,13 +129,3 @@ export const InitialSubmission = model<IInitialSubmission>(
   "submittionForm",
   initialSubmissionSchema
 );
-
-// initialSubmissionSchema.pre("validate", function (next) {
-//   if (!this.caseId) {
-//     const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
-//     const timePart = Date.now().toString().slice(-4);
-//     this.caseId = `${randomPart}${timePart}`;
-//     console.log("caseId=====>>>>", this.caseId);
-//   }
-//   next();
-// });
